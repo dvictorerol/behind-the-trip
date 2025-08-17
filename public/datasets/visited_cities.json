@@ -1,0 +1,15 @@
+{
+  "santiago":   { "lat": -33.4489, "lng": -70.6693 },
+  "paris":      { "lat": 48.8566,  "lng": 2.3522 },
+  "helsinki":   { "lat": 60.1699,  "lng": 24.9384 },
+  "tallinn":    { "lat": 59.4370,  "lng": 24.7536 },
+  "rovaniemi":  { "lat": 66.5039,  "lng": 25.7294 },
+  "levi":       { "lat": 67.8055,  "lng": 24.8028 },
+  "bugoynes":   { "lat": 69.2802,  "lng": 20.5811 },
+  "milan":      { "lat": 45.4642,  "lng": 9.1900 },
+  "venice":     { "lat": 45.4408,  "lng": 12.3155 },
+  "ljubljana":  { "lat": 46.0569,  "lng": 14.5058 },
+  "budapest":   { "lat": 47.4979,  "lng": 19.0402 },
+  "prague":     { "lat": 50.0755,  "lng": 14.4378 },
+  "riga":       { "lat": 56.9496,  "lng": 24.1052 }
+}

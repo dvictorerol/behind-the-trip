@@ -1,0 +1,16 @@
+[
+    { "from": "santiago", "to": "paris", "trip": "main" },
+    { "from": "paris", "to": "helsinki", "trip": "main" },
+    { "from": "helsinki", "to": "tallinn", "trip": "baltic" },
+    { "from": "helsinki", "to": "rovaniemi", "trip": "lapland" },
+    { "from": "rovaniemi", "to": "levi", "trip": "lapland" },
+    { "from": "levi", "to": "bugoynes", "trip": "lapland" },
+    { "from": "helsinki", "to": "milan", "trip": "easter" },
+    { "from": "milan", "to": "venice", "trip": "easter" },
+    { "from": "venice", "to": "ljubljana", "trip": "easter" },
+    { "from": "ljubljana", "to": "budapest", "trip": "easter" },
+    { "from": "budapest", "to": "prague", "trip": "easter" },
+    { "from": "prague", "to": "riga", "trip": "easter" },
+    { "from": "riga", "to": "tallinn", "trip": "easter" }
+  ]
+  
