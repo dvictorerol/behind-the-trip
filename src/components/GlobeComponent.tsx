@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Globe from 'globe.gl';
+import Globe, { GlobeInstance } from 'globe.gl';
 
 // Type definition for a route
 interface Route {
@@ -24,17 +24,17 @@ const visitedCountries = [
 
 const GlobeComponent: React.FC = () => {
   const globeRef = useRef<HTMLDivElement>(null);
-  const worldRef = useRef<ReturnType<typeof Globe> | null>(null);
+  const worldRef = useRef<GlobeInstance | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       // Load all datasets in parallel
+      const base = import.meta.env.BASE_URL;
       const [countriesRes, citiesRes, routesRes] = await Promise.all([
-        fetch('/datasets/ne_110m_admin_0_countries.geojson'),
-        fetch('/datasets/visited_cities.json'),
-        fetch('/datasets/routes.json')
+        fetch(`${base}datasets/ne_110m_admin_0_countries.geojson`),
+        fetch(`${base}datasets/visited_cities.json`),
+        fetch(`${base}datasets/routes.json`)
       ]);
-
       const countries = await countriesRes.json();
       const cities = await citiesRes.json();
       const routes: Route[] = await routesRes.json();
@@ -50,16 +50,16 @@ const GlobeComponent: React.FC = () => {
 
       if (!globeRef.current) return;
 
-      const world = Globe()(globeRef.current)
+      const world = new Globe(globeRef.current)
         .globeImageUrl('//cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg')
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(3)
         .hexPolygonMargin(0.3)
         .hexPolygonUseDots(true)
-        .hexPolygonColor(({ properties: d }) =>
-          visitedCountries.includes(d.ADMIN) ? '#F400A1' : 'white'
-        )
-        .hexPolygonLabel(({ properties: d }) => `<b>${d.ADMIN}</b>`)
+        .hexPolygonColor(({ properties: d }: any) =>
+     visitedCountries.includes(d.ADMIN) ? '#F400A1' : 'white'
+         )
+        .polygonLabel(({ properties: d }: any) => `<b>${d.ADMIN}</b>`)
         .backgroundColor('rgba(0,0,0,0)')
         .showAtmosphere(true)
         .globeOffset([-100, -80])
@@ -72,7 +72,7 @@ const GlobeComponent: React.FC = () => {
         .polygonAltitude(0.01)
         .polygonCapColor(() => '#ff00ff')
         .polygonSideColor(() => 'rgba(255, 0, 255, 0.3)')
-        .onHexPolygonClick(polygon => {
+        .onHexPolygonClick((polygon: any) => {
           if (!worldRef.current || !polygon.geometry) return;
 
           const geometry = polygon.geometry;

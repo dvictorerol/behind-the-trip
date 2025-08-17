@@ -3,7 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // make sure this path is correct relative to THIS FILE
-const modules = import.meta.glob("./places/*.md");
+const modules = import.meta.glob("./places/*.md", { as: "raw" });
+
 
 console.log("Modules found:", Object.keys(modules));
 

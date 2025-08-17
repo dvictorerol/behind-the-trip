@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div className='title'>
-          <img  src="/title.gif" />
+          <img src={`${import.meta.env.BASE_URL}title.gif`} />
       </div>
       <div className="container">
         <div><Navigation /></div>
